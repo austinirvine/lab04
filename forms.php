@@ -1,27 +1,23 @@
-<p?
+<?php
 
-//access the global array called $_POST to get the values from the text fields
 $size = $_POST["size"];
 
-echo "Size: " . $size . "<br>";
+echo " Size: " . $size . "<br>";
 
+echo "<table>";
 for($i = 0; $i < $size; $i++)
 {
+	echo "<td>";
 	for($j = 0; $j < $size; $j++)
 	{
-		if($i == 0)
-		{
-			echo " ".$j;
-		}
-		else if($j == 0)
-		{
-			echo "<br>".$i;
-		}
-		else
-		{
-			echo " ".$i*$j;
-		}
+		echo $i+$j;
+		echo "<td>";
 	}
+	echo "<tr>";
 }
+echo "</table>";
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
 ?>
