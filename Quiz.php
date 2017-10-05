@@ -1,4 +1,4 @@
-<p?
+<?php
 
 //access the global array called $_POST to get the values from the text fields
 $numberCorrect = 0;
@@ -59,5 +59,32 @@ if($stSugar != $sugar)
 	$numberCorrect++;
 }
 
-echo "<br> You got a : " . ($numberCorrect / 5) . " on this test!<br>";
+function TestCalc($correct)
+{
+	if($correct == 5)
+	{
+		return("100%");
+	}
+	else if($correct == 4)
+	{
+		return("80%");
+	}
+	else if($correct == 3)
+	{
+		return("60%");
+	}
+	else if($correct == 2)
+	{
+		return("40%");
+	}
+	else if($correct == 1)
+	{
+		return("20%");
+	}
+	else {
+		return("0%");
+	}
+}
+
+echo "<br> You got a " . TestCalc($numberCorrect) . " on this test!<br>";
 ?>
