@@ -6,6 +6,8 @@
 				username must be in email address form, password can be anything but blank,
 				shipping option is required
 */
+var msg = "";
+
 function checkInput()
 {
 	var username = document.getElementById("username").value;
@@ -14,22 +16,39 @@ function checkInput()
 	var qMilk = document.getElementById("qMilk").value;
 	var qBread = document.getElementById("qBread").value;
 	var qSoul = document.getElementById("qSoul").value;
-	var shipping = document.getElementById("shipping").value;
-	
-	alert("Yo");
+	var shipping = document.getElementById("shipping");
+
+	msg = "Fix the following to place your order: ";
 	//username check
 	//password check
 	//quantity check
 	//item check
 	//shipping check
-	
-	if(userCheck(username) && passCheck(password) && shippingCheck(shipping) && quantityCheck(qEggs, qMilk, qBread, qSoul))
+	var babyCounter = 0;
+	if(userCheck(username))
+	{
+		babyCounter++;
+	}
+	if(passCheck(password))
+	{
+		babyCounter++;
+	}
+	if(quantityCheck(qEggs, qMilk, qBread, qSoul))
+	{
+		babyCounter++;
+	}
+
+
+	if(babyCounter == 3)
 	{
 		//YAY!
 		alert("Order Confirmed For: "+username+"!");
 		return true;
 	}
-	
+	else {
+		alert(msg + "|");
+	}
+
 	return false;
 }
 
@@ -41,52 +60,50 @@ function checkInput()
 function userCheck(username)
 {
 	var check = false;
-	
+
 	var emailsArray = username.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 	if (emailsArray != null && emailsArray.length) {
 		check = true;
 	}
-	
+	else {
+		msg += "\nUsername should look like user@domain.com | ";
+	}
+
 	return check;
 }
 
 function passCheck(password)
 {
 	var check = false;
-	
+
 	if(password != "")
 	{
 		check = true;
 	}
-	
+	else {
+		msg += "\nPassword slot must be non-empty | ";
+	}
+
 	return check;
 }
 
 function quantityCheck(qEggs, qMilk, qBread, qSoul)
 {
 	var check = false;
-	
+	var lengthChecker = 0;
+
 	var qECheck = qEggs.match(/([0-9._-])/gi);
 	var qMCheck = qMilk.match(/([0-9._-])/gi);
 	var qBCheck = qBread.match(/([0-9._-])/gi);
 	var qSCheck = qSoul.match(/([0-9._-])/gi);
-	if (qECheck != null && qMCheck != null && qBCheck != null && qSCheck != null) 
+	if ((qECheck != null || qEggs.length == 0) && (qMCheck != null || qMilk.length == 0) && (qBCheck != null || qBread.length == 0) && (qSCheck != null || qSoul.length == 0))
 	{
 		check = true;
 	}
-	
-	return check;
-}
+	else {
+		msg += "\nQuantities of product should be number values or empty | ";
+	}
 
-function shippingCheck(shipping)
-{
-	var check = false;
-	
-	if(shipping != "")
-	{
-		check = true;
-	}
-	
 	return check;
 }
 

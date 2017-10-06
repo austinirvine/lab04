@@ -3,16 +3,16 @@
 	<link href="style.css"
             rel="stylesheet"
             type="text/css">
-			
+
 		<title>Austin's</title>
-			
+
 		<script type="text/javascript"
 			 src="formChecker.js">
-		</script>	
+		</script>
     </head>
 <body>
 
-    <form onsubmit="return checkInput()" id="form1" method="post">
+    <form onsubmit="return checkInput()" id="form1" method="post" action="customerBackend.php">
         <div class="Intro" > <p>"Welcome to your one stop shop!"</p><br></div>
 		Enter A Username<br>
 		<input type="text" id="username" name="username" value=""><br>
@@ -22,15 +22,15 @@
 		<input type="text" id="qEggs" name="qEggs" value=""> Number of Eggs @ 10 cents each<br>
 		<input type="text" id="qMilk" name="qMilk" value=""> Amount of Milk @ $2.00 a gallon<br>
 		<input type="text" id="qBread" name="qBread" value=""> Loafs of Bread @ $1.00 a loaf<br>
-		<input type="text" id="qSoul" name="qSoul" value=""> Your Soul @ $1.00 a pound<br><br>
+		<input type="text" id="qSoul" name="qSoul" value=""> Your Soul @ $50.00 a pound<br><br>
 		What type of shipping do you want:<br>
-		<input type="radio" id="shipping" name="shipping" value="free"> Free 7-Day<br>
-		<input type="radio" id="shipping" name="shipping" value="overnight">$50 Overnight<br>
-		<input type="radio" id="shipping" name="shipping" value="three">$5 Three-Day<br>
-		<input type="radio" id="shipping" name="shipping" value="pickup">Pickup At Store<br><br>
-        
+		<input type="radio" name="shipping" value="free" required> Free 7-Day<br>
+		<input type="radio" name="shipping" value="overnight" required>$50 Overnight<br>
+		<input type="radio" name="shipping" value="three" required>$5 Three-Day<br>
+		<input type="radio" name="shipping" value="pickup" required>Pickup At Store<br><br>
+
 		<input type="button" value="Reset  Order" onclick="Reset()">
 		<input type="submit" value="Submit Order">
     </form>
 </body>
-</html> 
+</html>
