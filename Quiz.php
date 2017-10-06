@@ -1,8 +1,6 @@
 <?php
 
 //access the global array called $_POST to get the values from the text fields
-$numberCorrect = 0;
-
 $size = $_POST["size"];
 $movie = $_POST["movie"];
 $mars = $_POST["mars"];
@@ -13,7 +11,7 @@ $stSize = "earth";
 $stMovie = "moon";
 $stMars = "maven";
 $stPaper = "fifty";
-$stSugar = "onehundred";
+$stSugar = "one-hundred-eleven";
 
 echo "<br> The quiz results are: <br> ";
 
@@ -38,46 +36,48 @@ echo "<br> How many cups of sugar does it take to get to the Moon?<br><br>";
 echo "Your Answer : " . $sugar . "<br>";
 echo "Correct Answer : " . $stSugar . "<br>";
 
-if($stSize != $size)
+$numberCorrect = 0;
+
+if($stSize == $size)
 {
-	$numberCorrect++;
+	$numberCorrect+=1;
 }
-if($stMovie != $movie)
+if($stMovie == $movie)
 {
-	$numberCorrect++;
+	$numberCorrect+=1;
 }
-if($stMars != $mars)
+if($stMars == $mars)
 {
-	$numberCorrect++;
+	$numberCorrect+=1;
 }
-if($stPaper != $paper)
+if($stPaper == $paper)
 {
-	$numberCorrect++;
+	$numberCorrect+=1;
 }
-if($stSugar != $sugar)
+if($stSugar == $sugar)
 {
-	$numberCorrect++;
+	$numberCorrect+=1;
 }
 
-function TestCalc($correct)
+function TestCalc($numberCorrect)
 {
-	if($correct == 5)
+	if($numberCorrect == 5)
 	{
 		return("100%");
 	}
-	else if($correct == 4)
+	else if($numberCorrect == 4)
 	{
 		return("80%");
 	}
-	else if($correct == 3)
+	else if($numberCorrect == 3)
 	{
 		return("60%");
 	}
-	else if($correct == 2)
+	else if($numberCorrect == 2)
 	{
 		return("40%");
 	}
-	else if($correct == 1)
+	else if($numberCorrect == 1)
 	{
 		return("20%");
 	}
